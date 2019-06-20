@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ProportionalDiscountDivision implements DiscountDivision {
 
+    private static final int SCALE = 2;
+
     /**
      * This implementation splits the discount proportionally.
      * In case cannot split the remaining discount is added to last product.
@@ -35,7 +37,10 @@ public class ProportionalDiscountDivision implements DiscountDivision {
 
         for (int i = 0; i < products.size(); i++) {
             BigDecimal price = products.get(i).getPrice();
-            discountPerProduct[i] =  price.divide(sum,2, RoundingMode.DOWN).multiply(discount);
+            discountPerProduct[i] =  price
+                    .divide(sum, SCALE, RoundingMode.DOWN)
+                    .multiply(discount)
+                    .setScale(SCALE, RoundingMode.DOWN);
             discountSum = discountSum.add(discountPerProduct[i]);
         }
 

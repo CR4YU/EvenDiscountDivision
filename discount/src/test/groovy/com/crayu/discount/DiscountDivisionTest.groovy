@@ -30,6 +30,8 @@ class DiscountDivisionTest extends Specification {
         new ProportionalDiscountDivision() | [1500.0, 500.0]      | 2000.0   | [1500.0, 500.0]
         new ProportionalDiscountDivision() | [1500.0, 500.0]      | 5000.0   | [1500.0, 500.0]
         new ProportionalDiscountDivision() | [10.0, 10.0]         | 5.0      | [2.5, 2.5]
-
+        new ProportionalDiscountDivision() | [10.0, 10.0, 10.0]   | 0.50     | [0.16, 0.16, 0.18]
+        new ProportionalDiscountDivision() | [10.0, 10.0, 10.0]   | 0.02     | [0.0, 0.0, 0.02]
+        new ProportionalDiscountDivision() | [10.0, 10.0, 10.0]   | 0.04     | [0.01, 0.01, 0.02]
     }
 }
